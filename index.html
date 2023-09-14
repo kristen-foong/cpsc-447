@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visualboxd</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="resources/letterboxdLogo.png" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:100,200,300,400,500,600,700,800|Poppins:100,200,300,400,500,600,700,800"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Add HTML content, SVG drawing area, ... -->
+
+    <!-- Header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>
+            <img
+              src="resources/letterboxdLogo.png"
+              style="width: 80px; margin-right: 10px"
+            />Visualboxd
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- User selection -->
+    <div class="container">
+      <div class="row">
+        <div id="user-select">
+          <label for="user">Which users do you want to compare?</label>
+          <br />
+          <select
+            class="selectpicker"
+            data-live-search="true"
+            id="user1Select"
+          ></select>
+          <select
+            class="selectpicker"
+            data-live-search="true"
+            id="user2Select"
+          ></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barcharts -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          <svg id="genre-barchart"></svg>
+        </div>
+        <div class="col-xs-4">
+          <svg id="country-barchart"></svg>
+        </div>
+        <div class="col-xs-4">
+          <svg id="language-barchart"></svg>
+        </div>
+        <div id="barchart-tooltip"></div>
+      </div>
+    </div>
+
+    <div class="container" id="scatter-and-ratings">
+      <div class="row">
+        <!-- User 1 -->
+        <div class="col-xs-3" id="user1rating-container">
+          <h2>Breakdown by Movie Era</h2>
+          <svg id="user1-piechart"></svg>
+          <div id="user1-average-hours"></div>
+          <svg id="user1-ratings-barchart"></svg>
+        </div>
+
+        <!-- Scatterplots -->
+        <div class="col-xs-6" id="scatter-container">
+          <div id="top-movies-select">
+            <label for="top-movies" style="padding: 1%"
+              >Compare Users' Top Rated Movies</label
+            >
+            <select name="top-movies" id="top-movies">
+              <option value="1">Top Movie</option>
+              <option value="10">Top 10</option>
+              <option value="50">Top 50</option>
+              <option value="100" selected>Top 100</option>
+              <option value="1000">Top 1000</option>
+            </select>
+            <ul class="scatterplots-legend">
+              <li class="legend-button" category="both">
+                <span class="legend-symbol"></span> Movies both users have seen
+              </li>
+              <li class="legend-button" category="user1">
+                <span class="legend-symbol"></span> Movies
+                <span id="legend-user1"></span> has seen
+              </li>
+              <li class="legend-button" category="user2">
+                <span class="legend-symbol"></span> Movies
+                <span id="legend-user2"></span> has seen
+              </li>
+            </ul>
+          </div>
+
+          <div id="user-scatterplot-comparison">
+            <h2>User Movie Comparison</h2>
+            <svg id="scatter-plot-u1"></svg>
+            <svg id="scatter-plot-u2"></svg>
+            <div id="scatterplot-tooltip">
+              <div id="scatterplot-tooltip-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User 2 -->
+        <div class="col-xs-3" id="user2rating-container">
+          <h2>Breakdown by Movie Era</h2>
+          <svg id="user2-piechart"></svg>
+          <div id="user2-average-hours"></div>
+          <svg id="user2-ratings-barchart"></svg>
+        </div>
+        <div id="piechart-tooltip"></div>
+        <div id="ratings-barchart-tooltip"></div>
+      </div>
+    </div>
+
+    <!-- D3 bundle -->
+    <script src="js/d3.v6.min.js"></script>
+
+    <!-- Our JS code -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/barchart.js"></script>
+    <script src="js/groupedBarchart.js"></script>
+    <script src="js/userUserScatterplot.js"></script>
+    <script src="js/ratingsBarchart.js"></script>
+    <script src="js/piechart.js"></script>
+  </body>
+</html>
